@@ -1,14 +1,13 @@
 import React from 'react';
-import './App.css';
-import Widget from './Widget';
+import DataDisplay from './components/DataDisplay.js';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Firebase Widget</h1>
-      <Widget />
-    </div>
-  );
+    return (
+        <div className="App">
+            <h1>Your React App</h1>
+            <DataDisplay />
+        </div>
+    );
 }
 
 export default App;
