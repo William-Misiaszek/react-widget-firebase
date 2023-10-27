@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { firestore } from '../firebaseConfig';
 
+//TESTS FIREBASE FUNCTIONALITY. NOT FOR SITE USE.
+
 function DataDisplay() {
     const [locations, setLocations] = useState([]);
 
