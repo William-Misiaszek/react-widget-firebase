@@ -1,0 +1,67 @@
+/* Base styling for the widget */
+.localist-widget {
+    font-family: Arial, sans-serif; /* Generic font, you might want to use something more specific */
+    max-width: 600px; /* Adjust as needed */
+    margin: 20px auto; /* Center the widget if it's in a larger container */
+}
+
+/* Styling for event list */
+.event-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.event {
+    display: flex;
+    border-bottom: 1px solid #ddd; /* Adds a light gray line between events */
+    padding: 15px 0;
+}
+
+/* Styling for the date section of each event */
+.event-date {
+    width: 70px; /* Adjust as needed */
+    text-align: center;
+    margin-right: 20px;
+}
+
+.event-date__month {
+    display: block;
+    font-weight: bold;
+    font-size: 16px; /* Adjust as needed */
+}
+
+.event-date__day {
+    display: block;
+    font-size: 24px; /* Adjust as needed */
+    font-weight: bold;
+}
+
+/* Styling for event details */
+.event-details {
+    flex-grow: 1;
+}
+
+.event-title__link {
+    text-decoration: none;
+    color: #007acc; /* Adjust as needed */
+}
+
+.event-title {
+    font-size: 18px; /* Adjust as needed */
+    margin: 0;
+    margin-bottom: 10px; /* Adds some space between the title and the details below */
+}
+
+/* Styling for the event date and location icons and text */
+.event-when__icon, .event-location__icon {
+    width: 20px; /* Adjust as needed */
+    height: 20px;
+    margin-right: 5px; /* Adds some space between the icon and the text */
+    vertical-align: middle; /* Aligns the icon with the middle of the adjacent text */
+}
+
+.event-when, .event-location {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Adds some space between each event detail line */
+}

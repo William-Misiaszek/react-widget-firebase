@@ -1,59 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { firestore } from "../firebaseConfig";
+import "../css/LocationsWidget.css";
 
 const LocationsWidget = () => {
-  const [locations, setLocations] = useState([]);
+    const [locations, setLocations] = useState([]);
 
-  // Fetching data from Firestore
-  useEffect(() => {
-    async function fetchData() {
-      const querySnapshot = await getDocs(collection(firestore, "locations"));
-      const locationsArray = querySnapshot.docs.map((doc) => doc.data());
-      setLocations(locationsArray);
-    }
-    fetchData();
-  }, []);
+    // Fetching data from Firestore
+    useEffect(() => {
+        async function fetchData() {
+            const querySnapshot = await getDocs(collection(firestore, "locations"));
+            const locationsArray = querySnapshot.docs.map((doc) => doc.data());
+            setLocations(locationsArray);
+            console.log("Locations fetched:", locationsArray);
+        }
+        fetchData();
+    }, []);
 
-  return (
-    <div style={styles.container}>
-      {locations.map((location, index) => (
-        <div key={index} style={styles.row}>
-          <div style={styles.title}>{location.locationName}</div>
-          <div style={styles.note}>{location.note}</div>
+    return (
+        <div className="localist-widget">
+            <ul className="event-list">
+                {locations.map((location, index) => (
+                    <li key={index} className="event">
+                        <div className="event-date">
+                            {/* You'll need to modify this to display the actual date */}
+                            <span className="event-date__month">Jan</span>
+                            <span className="event-date__day">24</span>
+                        </div>
+                        <div className="event-details">
+                            <a href="#" className="event-title__link">
+                                <h2 className="event-title">{location.locationName}</h2>
+                            </a>
+                            <div className="event-when">
+                                {/* Add an icon here if you have one */}
+                                <span>{location.note}</span>
+                            </div>
+                            {/* Add event-location details here if you have them */}
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </div>
-      ))}
-    </div>
-  );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    padding: "20px",
-    backgroundColor: "#141414", // Netflix dark background color
-    color: "white",
-    fontFamily: "Arial, sans-serif",
-  },
-  row: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "15px",
-    padding: "10px",
-    borderRadius: "8px",
-    backgroundColor: "#282828", // Slightly lighter than background for contrast
-  },
-  title: {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginRight: "20px",
-  },
-  note: {
-    fontSize: "16px",
-  },
+    );
 };
 
 export default LocationsWidget;
